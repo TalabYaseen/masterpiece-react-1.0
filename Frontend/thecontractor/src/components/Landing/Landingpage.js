@@ -5,6 +5,7 @@ import WellcomeCard from './WellcomeCard';
 import LatestBids from './LatestBids';
 import TopRating from './TopRating';
 import Reviews from './Reviews';
+import OurServices from './OurServices';
 
 const Landingpage = () => {
     return (
@@ -16,6 +17,7 @@ const Landingpage = () => {
     
     </div>
     <LatestBids></LatestBids>
+    <OurServices></OurServices>
     <TopRating></TopRating>
     <Reviews></Reviews>
     </>

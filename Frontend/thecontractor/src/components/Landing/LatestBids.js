@@ -5,7 +5,7 @@ const LatestBids = () => {
  {/* <!-- latest bids section start--> */}
 <div class="latestbids">
   <h2 class="title">
-    {/* Latest Bids */}
+    Latest Bids
   </h2>
   {/* <!-- single bid view --> */}
   <div class="bid">

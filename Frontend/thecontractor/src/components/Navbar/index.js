@@ -23,11 +23,11 @@ const changeBackgroundNav =() => {
 const navbardown = {background: "#FEA901"};
 window.addEventListener('scroll',changeBackgroundNav);
   return (
-    <Router>
+    <>
       <Nav  className={navbarcolor && navbardown} >
         <Bars></Bars>
         <NavMenu>
-          <NavLink to='/Home' activeStyle>
+          <NavLink to='/' activeStyle>
           Home
           </NavLink>
           <NavLink to='/Bids' activeStyle>
@@ -51,7 +51,7 @@ window.addEventListener('scroll',changeBackgroundNav);
           <NavBtnLink to='/register'>Sign Up</NavBtnLink>
         </NavBtn>
       </Nav>
-      </Router>
+      </>
   );
 };
 

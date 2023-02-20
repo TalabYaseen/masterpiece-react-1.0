@@ -1,13 +1,23 @@
-import Navbar from './components/Navbar/index';
 import Landingpage from './components/Landing/Landingpage';
 import './App.css';
+import AllBidsPage from './components/AllBids/AllBidsPage';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link,
+  Routes
+} from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <Landingpage>
-      </Landingpage> 
-    </>
+          <BrowserRouter>
+          <Routes>
+          <Route path="/" element={<Landingpage />}/>
+          <Route path="/Bids" element={<AllBidsPage />}/>
+          </Routes>
+          </BrowserRouter>
+
   );
 }
 
