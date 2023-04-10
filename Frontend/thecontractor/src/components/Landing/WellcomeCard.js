@@ -1,4 +1,5 @@
 import {React} from 'react';
+import { NavLink } from 'react-router-dom';
 const WellcomeCard = () => {
     return (
         <>
@@ -21,11 +22,11 @@ const WellcomeCard = () => {
     </div>
     {/* <!-- call to action start --> */}
     <div className="wellcome-word">
-      <a href="">
+      <NavLink to="/newbid">
         <button>
           Make a bid
         </button>
-      </a>
+      </NavLink>
     </div>
     {/* <!-- call to action end --> */}
   </div>

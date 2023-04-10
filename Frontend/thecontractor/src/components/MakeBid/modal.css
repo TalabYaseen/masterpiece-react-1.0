@@ -1,0 +1,19 @@
+.my-modal {
+    width: 90vw    ;/* Occupy the 90% of the screen width */
+    max-width: 90vw;
+}
+.itemid {
+    width: 10%;
+}
+.itemdescription {
+    width: 70vw;
+}
+.itemunit {
+    width: 10%;
+}
+.itemquantity {
+    width: 10%;
+}
+/* .trheight {
+    min-height: 10rem;
+} */

@@ -6,7 +6,7 @@ import LatestBids from './LatestBids';
 import TopRating from './TopRating';
 import Reviews from './Reviews';
 import OurServices from './OurServices';
-
+// front page
 const Landingpage = () => {
     return (
     <>

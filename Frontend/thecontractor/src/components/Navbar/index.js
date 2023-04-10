@@ -1,4 +1,5 @@
 import { BrowserRouter as Router } from 'react-router-dom';
+import "./style.css";
 import {React,useState} from 'react';
 import {
   Nav,
@@ -20,11 +21,10 @@ const changeBackgroundNav =() => {
     }
 }
 
-const navbardown = {background: "#FEA901"};
 window.addEventListener('scroll',changeBackgroundNav);
   return (
     <>
-      <Nav  className={navbarcolor && navbardown} >
+      <Nav  className={ navbarcolor ? 'navbardown':""} style={{position:"sticky",top: 0,}}>
         <Bars></Bars>
         <NavMenu>
           <NavLink to='/' activeStyle>

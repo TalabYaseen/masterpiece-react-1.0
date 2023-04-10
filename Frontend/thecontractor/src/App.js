@@ -8,6 +8,10 @@ import {
   Link,
   Routes
 } from "react-router-dom";
+import RegisterPage from './components/Register/RegisterPage';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Signin from './components/signin/Signin';
+import MakeBidPage from './components/MakeBid/MakeBidPage';
 
 function App() {
   return (
@@ -15,6 +19,9 @@ function App() {
           <Routes>
           <Route path="/" element={<Landingpage />}/>
           <Route path="/Bids" element={<AllBidsPage />}/>
+          <Route path="/register" element={<RegisterPage/>}/>
+          <Route path="/signin" element={<Signin />}/>
+          <Route path="/newbid" element={<MakeBidPage />}/>
           </Routes>
           </BrowserRouter>
 
