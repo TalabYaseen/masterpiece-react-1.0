@@ -6,12 +6,16 @@ import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import "./modal.css"
 
-function PricingTableModal() {
+function PricingTableModal(props) {
   const [show, setShow] = useState(false);
   const [Pricingtable, setPricingtable] = useState([]);
   const [itemnum, setitemnum] = useState(1);
+  const [Descriptionerror, setDescriptionerror] = useState("");
+  const [itemuniterror, setitemuniterror] = useState("");
+  const [itemquantityerror, setitemquantityerror] = useState("");
+  
   useEffect(() => {
-    console.log(Pricingtable);
+    props.PricingTableChange(Pricingtable)
   }, [Pricingtable]);
 const saveitem =()=> {
     let itemid = itemnum ;
@@ -19,9 +23,32 @@ const saveitem =()=> {
     let itemunit = (document.getElementById("itemunit").value)
     let itemquantity = (document.getElementById("itemquantity").value)
     let item = {itemid,itemdescription,itemunit,itemquantity};
-    setitemnum(itemnum+1);
-    setPricingtable([...Pricingtable, item]);
-    console.log(Pricingtable)
+    if(itemdescription !="" && itemunit !="" && itemquantity != ""){
+      setitemnum(itemnum+1);
+      setPricingtable([...Pricingtable, item]);
+      (document.getElementById("itemdescription").value) = "";
+      (document.getElementById("itemunit").value) = "";
+      (document.getElementById("itemquantity").value) = "";
+
+    }
+    else {
+      if (itemdescription == "") {
+        setDescriptionerror ("Fill Description please")
+      }
+      if (itemunit == "") {
+        setitemuniterror ("Fill unit please")
+      }
+      if (itemquantity == "") {
+        setitemquantityerror ("Fill quantity please")
+      }
+    }
+    
+}
+
+const clean =()=> {
+  setitemquantityerror ("")
+  setitemuniterror ("")
+  setDescriptionerror ("")
 }
   return (
     <>
@@ -67,13 +94,19 @@ const saveitem =()=> {
          {itemnum}
          </td>
          <td>
-            <Form.Control type="text" placeholder="Item Description" id="itemdescription"/>
+            <Form.Control type="text" placeholder="Item Description" id="itemdescription" onChange={()=>clean()}/>
+            <br></br>
+            <span className='errormsg'>{Descriptionerror}</span>
          </td>
          <td>
-         <Form.Control type="text" placeholder="Unit" id="itemunit"/>
+         <Form.Control type="text" placeholder="Unit" id="itemunit" onChange={()=>clean()}/>
+         <br></br>
+         <span className='errormsg'>{itemuniterror}</span>
          </td>
          <td>
-         <Form.Control type="number" placeholder="Quantity" min={1} id="itemquantity"/>
+         <Form.Control type="number" placeholder="Quantity" min={1} id="itemquantity" onChange={()=>clean()}/>
+         <br></br>
+         <span className='errormsg'>{itemquantityerror}</span>
          </td>
          <td><Button variant="outline-success" onClick={() => saveitem()}>+</Button></td>
         </tr>

@@ -7,38 +7,48 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
+import UserService from '../../apis/UserService';
+import { toast,ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 
 const Signin = () => {
+  const navigate = useNavigate();
     const handleSubmit = (event) =>{
         event.preventDefault();
         // console.log(event.target.inlineRadio.value);
-        const user = {first_name :event.target.First_Name.value, 
-                second_name :event.target.Second_Name.value, 
-                last_name :event.target.Last_Name.value, 
-                Occupation :event.target.inlineRadio.value, 
-                phone :event.target.Phone_Number.value, 
+        const user = {
                 password :event.target.password.value, 
-                photo :event.target.photo.value, 
-                email :event.target.Email.value}
-                console.log(user)
-                // UserService.createUser(JSON.stringify(user) );
+                email :event.target.email.value}
+
+                UserService.finduser(JSON.stringify(user)).then(function(res){
+                  console.log(res.data)
+                  if (res.data == "user not found") {
+                      toast.error('wrong email or password');
+                  }
+                  else if (res.data) {
+                      // toast.success('Account Successfully created!');
+                      sessionStorage.setItem("user", JSON.stringify(res.data));
+                      navigate('/');
+                  }else{
+                }
+                });
     }
   return (
     <>
     <Navbar></Navbar>
     <Container>
     <h1 className="mb-5">Login Form</h1>
-    <form>
+    <form onSubmit={handleSubmit}>
         <FloatingLabel
         controlId="floatingInput"
         label="Email address"
         className="mb-3"
       >
-            <Form.Control type="email" placeholder="name@example.com" />
+            <Form.Control type="email" placeholder="name@example.com" name="email"/>
              </FloatingLabel>
             <FloatingLabel controlId="floatingPassword" label="Password">
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control type="password" placeholder="Password" name="password"/>
         </FloatingLabel>
         <Col xs="auto" className="my-1 ">
           <Button type="submit"  variant="outline-warning" size="lg">Submit</Button>

@@ -1,6 +1,13 @@
 import {React} from 'react';
 import { NavLink } from 'react-router-dom';
+import { toast,ToastContainer } from 'react-toastify';
+
 const WellcomeCard = () => {
+
+  const loginfirst = () => {
+    toast.error('Log in first to make new bid');
+  }
+
     return (
         <>
           {/* <!-- wellcome word start --> */}
@@ -22,11 +29,18 @@ const WellcomeCard = () => {
     </div>
     {/* <!-- call to action start --> */}
     <div className="wellcome-word">
+    {sessionStorage.getItem("user") ?
       <NavLink to="/newbid">
         <button>
           Make a bid
         </button>
-      </NavLink>
+      </NavLink> :
+      <NavLink onClick={()=>loginfirst()}>
+      <button>
+        Make a bid
+      </button>
+    </NavLink>
+      }
     </div>
     {/* <!-- call to action end --> */}
   </div>
